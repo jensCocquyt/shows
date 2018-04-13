@@ -12,8 +12,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { ShowDetailEffects } from './state-management/effects/showDetail';
 import { ShowDetailReducer } from './state-management/reducers/showDetail';
 import { PagedShowsReducer } from './state-management/reducers/pagedShows';
-import { ShowsQueryDataReducer } from './state-management/reducers/showsQueryData';
+import { ShowsQueryDataActionMappings } from './state-management/reducers/showsQueryData';
 import { PagedShowsEffects } from './state-management/effects/pagedShows';
+import { QueryDataReducer } from './state-management/reducers/queryData';
 
 
 
@@ -30,7 +31,7 @@ import { PagedShowsEffects } from './state-management/effects/pagedShows';
     StoreModule.forRoot({
       showDetail: ShowDetailReducer,
       searchValue: SearchReducer,
-      showsQueryData: ShowsQueryDataReducer,
+      showsQueryData: QueryDataReducer(ShowsQueryDataActionMappings),
       pagedShows: PagedShowsReducer
     }),
     EffectsModule.forRoot([ShowDetailEffects, PagedShowsEffects]),
