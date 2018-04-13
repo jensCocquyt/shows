@@ -1,12 +1,12 @@
 import { Show } from '../../core/model/show';
-import { Actions, SETQUERYDATASEARCHVALUE, SETQUERYDATAPAGE } from './../actions/queryData';
+import { Actions, SETSHOWSQUERYDATASEARCHVALUE, SETSHOWSQUERYDATAPAGE } from './../actions/showsQueryData';
 import { QueryData } from '../../core/model/queryData';
 
-export function QueryDataReducer(state: QueryData, action: Actions) {
+export function ShowsQueryDataReducer(state: QueryData, action: Actions) {
     switch (action.type) {
-        case SETQUERYDATASEARCHVALUE:
+        case SETSHOWSQUERYDATASEARCHVALUE:
             return Object.assign({}, state, { searchValue: action.payload, page: 1 });
-        case SETQUERYDATAPAGE:
+        case SETSHOWSQUERYDATAPAGE:
             return Object.assign({}, state, { page: action.payload });
         default:
             return state;

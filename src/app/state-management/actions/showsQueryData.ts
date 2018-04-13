@@ -2,11 +2,11 @@ import { Action } from '@ngrx/store';
 import { Show } from '../../core/model/show';
 import { Comment } from '../../core/model/comment';
 
-export const SETQUERYDATASEARCHVALUE = 'SETQUERYDATASEARCHVALUE';
-export const SETQUERYDATAPAGE = 'SETQUERYDATAPAGE';
+export const SETSHOWSQUERYDATASEARCHVALUE = 'SETSHOWSQUERYDATASEARCHVALUE';
+export const SETSHOWSQUERYDATAPAGE = 'SETSHOWSQUERYDATAPAGE';
 
 export class SetQueryDataSearchValueAction implements Action {
-    type: string = SETQUERYDATASEARCHVALUE;
+    type: string = SETSHOWSQUERYDATASEARCHVALUE;
     payload: string;
 
     constructor(searchValue: string) {
@@ -15,7 +15,7 @@ export class SetQueryDataSearchValueAction implements Action {
 }
 
 export class SetQueryDataSearchPage implements Action {
-    type: string = SETQUERYDATAPAGE;
+    type: string = SETSHOWSQUERYDATAPAGE;
     payload: number;
 
     constructor(page: number) {

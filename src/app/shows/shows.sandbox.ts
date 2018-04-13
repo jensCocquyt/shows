@@ -13,7 +13,7 @@ import { SetSearchValueAction } from '../state-management/actions/search';
 
 
 import { Comment } from '../core/model/comment';
-import { SetQueryDataSearchPage, SetQueryDataSearchValueAction } from '../state-management/actions/queryData';
+import { SetQueryDataSearchPage, SetQueryDataSearchValueAction } from '../state-management/actions/showsQueryData';
 import { LoadPagedShowsAction } from '../state-management/actions/pagedShows';
 
 @Injectable()
@@ -21,7 +21,7 @@ export class ShowsSandbox implements OnDestroy {
 
     shows$ = this.store.pipe(select(s => s.shows));
     pagedShows$ = this.store.pipe(select(s => s.pagedShows));
-    queryData$ = this.store.pipe(select(s => s.queryData));
+    queryData$ = this.store.pipe(select(s => s.showsQueryData));
     show$ = this.store.pipe(select(s => s.showDetail));
     setSearchValue$ = new Subject<string>();
     setPage$ = new Subject<number>();
@@ -39,7 +39,7 @@ export class ShowsSandbox implements OnDestroy {
 
         this.store.pipe(
             takeUntil(this.onDestroy$),
-            select(s => s.queryData),
+            select(s => s.showsQueryData),
             filter(s => !!s)
         ).subscribe((s) => this.store.dispatch(new LoadPagedShowsAction(s)));
 

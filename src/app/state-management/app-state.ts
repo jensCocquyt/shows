@@ -7,5 +7,5 @@ export interface AppState {
     pagedShows: PagedList<Show>;
     showDetail: Show;
     searchValue: string;
-    queryData: QueryData;
+    showsQueryData: QueryData;
 }

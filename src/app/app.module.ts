@@ -12,7 +12,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { ShowDetailEffects } from './state-management/effects/showDetail';
 import { ShowDetailReducer } from './state-management/reducers/showDetail';
 import { PagedShowsReducer } from './state-management/reducers/pagedShows';
-import { QueryDataReducer } from './state-management/reducers/queryData';
+import { ShowsQueryDataReducer } from './state-management/reducers/showsQueryData';
 import { PagedShowsEffects } from './state-management/effects/pagedShows';
 
 
@@ -30,7 +30,7 @@ import { PagedShowsEffects } from './state-management/effects/pagedShows';
     StoreModule.forRoot({
       showDetail: ShowDetailReducer,
       searchValue: SearchReducer,
-      queryData: QueryDataReducer,
+      showsQueryData: ShowsQueryDataReducer,
       pagedShows: PagedShowsReducer
     }),
     EffectsModule.forRoot([ShowDetailEffects, PagedShowsEffects]),
