@@ -14,7 +14,7 @@ export class SetQueryDataSearchValueAction implements Action {
     }
 }
 
-export class SetQueryDataSearchPage implements Action {
+export class SetQueryDataSearchPageAction implements Action {
     type: string = SETSHOWSQUERYDATAPAGE;
     payload: number;
 
@@ -23,4 +23,4 @@ export class SetQueryDataSearchPage implements Action {
     }
 }
 
-export type Actions = SetQueryDataSearchValueAction | SetQueryDataSearchPage;
+export type Actions = SetQueryDataSearchValueAction | SetQueryDataSearchPageAction;
