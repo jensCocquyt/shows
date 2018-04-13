@@ -1,5 +1,5 @@
-import { Show } from "../../core/model/show";
-import { Actions, LOADSHOWSSUCCES } from "../actions/shows";
+import { Show } from '../../core/model/show';
+import { Actions, LOADSHOWSSUCCES } from '../actions/shows';
 
 
 export function ShowsReducer(state: Show[], action: Actions) {

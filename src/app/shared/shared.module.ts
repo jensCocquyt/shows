@@ -10,7 +10,7 @@ import { PagingComponent } from './paging/paging.component';
   imports: [
     CommonModule
   ],
-  exports:[
+  exports: [
     ListComponent,
     SearchComponent
   ],

@@ -1,4 +1,4 @@
-import { Comment } from './comment'
+import { Comment } from './comment';
 export class Show {
     public id: number;
     public name: string;

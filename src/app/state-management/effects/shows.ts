@@ -6,16 +6,16 @@ import { ShowsService } from '../../core/shows-service/shows.service';
 
 @Injectable()
 export class ShowsEffects {
-    constructor(private actions$: Actions, private ShowsService: ShowsService) { }
+    constructor(private actions$: Actions, private showsService: ShowsService) { }
 
     @Effect()
     shows$ = this.actions$.pipe(
         ofType<LoadShowsAction>(LOADSHOWS),
         mergeMap(action =>
-            this.ShowsService.search(action.payload).pipe(
+            this.showsService.search(action.payload).pipe(
                 map(data => new LoadShowsSuccesAction(data.results))
             )
         )
-    )
+    );
 
 }

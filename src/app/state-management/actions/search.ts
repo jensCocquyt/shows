@@ -1,6 +1,6 @@
-import { Action } from "@ngrx/store";
-import { Show } from "../../core/model/show";
-import { Comment } from "../../core/model/comment";
+import { Action } from '@ngrx/store';
+import { Show } from '../../core/model/show';
+import { Comment } from '../../core/model/comment';
 
 export const SETSEARCHVALUE = 'SETSEARCHVALUE';
 

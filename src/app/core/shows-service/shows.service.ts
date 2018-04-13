@@ -17,7 +17,8 @@ export class ShowsService {
 
   public search(query: string) {
     if (query) {
-      return this.fetchData(`https://api.themoviedb.org/3/search/tv?api_key=16c887c508decabbbb79db65a20b2d09&language=en-US&query=${query}&page=1`);
+      return this.fetchData(`https://api.themoviedb.org/3/
+      search/tv?api_key=16c887c508decabbbb79db65a20b2d09&language=en-US&query=${query}&page=1`);
     } else {
       return this.getAll();
     }
@@ -45,21 +46,23 @@ export class ShowsService {
 
   public getShowById(id: number) {
     return this.httpClient
-      .get<ResultShow>(`https://api.themoviedb.org/3/tv/${id}?api_key=16c887c508decabbbb79db65a20b2d09&language=en-US`);
+      .get<ResultShow>(`https://api.themoviedb.org/3/tv/${id}?` +
+      `api_key=16c887c508decabbbb79db65a20b2d09&language=en-US`);
   }
 
   public getCommentsById(id: number) {
-    return this.httpClient.get<Comment>(`http://localhost:51455/api/comments/${id}`)
+    return this.httpClient.get<Comment>(`http://localhost:51455/api/comments/${id}`);
   }
 
   public saveComment(comment: Comment) {
     return this.httpClient.post<ResultComment>(`http://localhost:51455/api/comments`, comment).pipe(
-      map(c => ({ subject: c.Subject, message: c.Message, showId: c.ShowId, createdOn: c.CreatedOn}))
-    )
+      map(c => ({ subject: c.Subject, message: c.Message, showId: c.ShowId, createdOn: c.CreatedOn }))
+    );
   }
 
   private getAll() {
-    return this.fetchData('https://api.themoviedb.org/3/discover/tv?api_key=16c887c508decabbbb79db65a20b2d09&language=en-US&sort_by=popularity.desc&page=1');
+    return this.fetchData(`https://api.themoviedb.org/3/discover/tv` +
+    `?api_key=16c887c508decabbbb79db65a20b2d09&language=en-US&sort_by=popularity.desc&page=1`);
   }
 
   private fetchData(url: string) {
@@ -76,7 +79,7 @@ export class ShowsService {
             rating: r.vote_average,
             id: r.id
           }))
-        }
+        };
       }));
   }
 
@@ -88,7 +91,7 @@ export class ResultSet<T> {
   page: number;
   total_pages: number;
   total_results: number;
-  results: T[]
+  results: T[];
 }
 
 export class ResultShow {

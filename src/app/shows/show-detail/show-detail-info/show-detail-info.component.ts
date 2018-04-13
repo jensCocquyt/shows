@@ -10,7 +10,7 @@ export class ShowDetailInfoComponent implements OnInit {
 
   constructor() { }
 
-  @Input() show: Show
+  @Input() show: Show;
 
   ngOnInit() {
   }

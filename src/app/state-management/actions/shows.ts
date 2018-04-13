@@ -1,6 +1,6 @@
-import { Action } from "@ngrx/store";
-import { Show } from "../../core/model/show";
-import { Comment } from "../../core/model/comment";
+import { Action } from '@ngrx/store';
+import { Show } from '../../core/model/show';
+import { Comment } from '../../core/model/comment';
 
 export const LOADSHOWS = 'LOADSHOWS';
 export const LOADSHOWSSUCCES = 'LOADSHOWSSUCCES';
@@ -18,7 +18,7 @@ export class LoadShowsAction implements Action {
     type: string = LOADSHOWS;
     payload: string;
 
-    constructor(searchValue: string = "") {
+    constructor(searchValue: string = '') {
         this.payload = searchValue;
     }
 }

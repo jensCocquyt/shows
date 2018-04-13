@@ -1,5 +1,5 @@
-import { Show } from "../../core/model/show";
-import { Actions, LOADSHOWDETAILSUCCES, SAVECOMMENTSUCCES } from "../actions/showDetail";
+import { Show } from '../../core/model/show';
+import { Actions, LOADSHOWDETAILSUCCES, SAVECOMMENTSUCCES } from '../actions/showDetail';
 
 
 export function ShowDetailReducer(state: Show, action: Actions) {

@@ -1,8 +1,8 @@
-import { Routes, RouterModule } from "@angular/router";
-import { NgModule } from "@angular/core";
-import { AllShowsComponent } from "./all-shows/all-shows.component";
-import { ShowDetailComponent } from "./show-detail/show-detail.component";
-import { ShowsComponent } from "./shows/shows.component";
+import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { AllShowsComponent } from './all-shows/all-shows.component';
+import { ShowDetailComponent } from './show-detail/show-detail.component';
+import { ShowsComponent } from './shows/shows.component';
 
 const routes: Routes = [
     {

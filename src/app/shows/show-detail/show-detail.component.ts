@@ -41,7 +41,7 @@ export class ShowDetailComponent implements OnInit, OnDestroy {
 
     this.currentShowId$
       .pipe(takeUntil(this.onDestroy$))
-      .subscribe((id) => this.store.dispatch(new LoadShowDetailAction(parseInt(id))));
+      .subscribe((id) => this.showsSandbox.getById(id));
 
     this.comments$ = this.show$.pipe(map((s) => s ? s.comments : []));
 

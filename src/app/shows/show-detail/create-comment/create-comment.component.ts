@@ -19,11 +19,11 @@ export class CreateCommentComponent {
     this.form = this.formBuilder.group({
       subject: ['', [Validators.required, Validators.maxLength(30)]],
       message: ['', [Validators.required]],
-    })
+    });
   }
 
   onSubmit() {
-    if(this.form.valid){
+    if (this.form.valid) {
       this.onCommentSubmit.emit({
         message: this.form.value.message,
         subject: this.form.value.subject,
@@ -31,7 +31,7 @@ export class CreateCommentComponent {
         showId: this.showId
       });
     }
-    
+
 
   }
 

@@ -1,5 +1,5 @@
-import { Show } from "../../core/model/show";
-import { Actions, SETSEARCHVALUE } from "./../actions/search";
+import { Show } from '../../core/model/show';
+import { Actions, SETSEARCHVALUE } from './../actions/search';
 
 export function SearchReducer(state: Show[], action: Actions) {
     switch (action.type) {

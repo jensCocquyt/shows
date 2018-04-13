@@ -23,7 +23,7 @@ export class AllShowsComponent {
   shows$ = this.showsSandbox.shows$;
 
   onSelected(id: number) {
-    this.router.navigate(['shows', id])
+    this.router.navigate(['shows', id]);
   }
 
   onSearch(input: string) {

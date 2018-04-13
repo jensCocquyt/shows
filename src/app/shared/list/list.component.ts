@@ -10,13 +10,13 @@ export class ListComponent implements OnInit {
 
   constructor() { }
 
-  public onClick(id: number) {
-    this.selected.emit(id);
-  }
 
   @Input() shows: Show[];
   @Output() selected = new EventEmitter<number>();
 
+  public onClick(id: number) {
+    this.selected.emit(id);
+  }
   ngOnInit() {
 
   }

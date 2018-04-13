@@ -25,13 +25,12 @@ export class SearchComponent implements OnInit, OnDestroy {
       .pipe(
         takeUntil(this.onDestroy$),
         debounceTime(300),
-        map( s => s.trim()),
+        map(s => s.trim()),
         distinctUntilChanged())
       .subscribe(s => this.onSearch.emit(s));
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.onDestroy$.next();
   }
-  
 }
