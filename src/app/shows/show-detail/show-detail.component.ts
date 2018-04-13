@@ -17,8 +17,6 @@ import { AppState } from '../../state-management/app-state';
   styleUrls: ['./show-detail.component.css']
 })
 export class ShowDetailComponent implements OnInit, OnDestroy {
-
-
   constructor(
     private route: ActivatedRoute,
     private showsService: ShowsService,

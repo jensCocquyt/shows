@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { ShowsService } from '../core/shows-service/shows.service';
-import { switchMap, map, mergeMap, startWith, filter } from 'rxjs/operators';
+import { switchMap, map, mergeMap, startWith, filter, takeUntil } from 'rxjs/operators';
 import { merge } from 'rxjs/observable/merge';
 import { Observable } from 'rxjs/Observable';
 import { Show } from '../core/model/show';
@@ -15,17 +15,19 @@ import { SetSearchValueAction } from '../state-management/actions/search';
 import { Comment } from '../core/model/comment';
 
 @Injectable()
-export class ShowsSandbox {
+export class ShowsSandbox implements OnDestroy {
 
     shows$ = this.store.pipe(select(s => s.shows));
     show$ = this.store.pipe(select(s => s.showDetail));
     searchQuery = new Subject<string>();
+    onDestroy$ = new Subject();
 
     constructor(private showsService: ShowsService, private store: Store<AppState>) {
 
         this.searchQuery.subscribe(s => this.store.dispatch(new SetSearchValueAction(s)));
 
         this.store.pipe(
+            takeUntil(this.onDestroy$),
             select(s => s.searchValue),
             filter(s => s !== undefined)
         ).subscribe(s => this.store.dispatch(new LoadShowsAction(s)));
@@ -38,4 +40,9 @@ export class ShowsSandbox {
     public saveComment(comment: Comment) {
         this.store.dispatch(new SaveCommentAction(comment));
     }
+
+    ngOnDestroy() {
+        this.onDestroy$.next();
+    }
+
 }
