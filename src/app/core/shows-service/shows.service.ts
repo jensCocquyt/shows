@@ -66,9 +66,7 @@ export class ShowsService {
       .get<ResultSet<ResultShow>>(url)
       .pipe(map(d => {
         return {
-          totalPages: d.total_pages,
           totalItems: d.total_results,
-          page: d.page,
           items: d.results.map(r => ({
             name: r.name,
             description: r.overview,

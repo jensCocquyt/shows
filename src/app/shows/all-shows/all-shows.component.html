@@ -1,4 +1,4 @@
-<ngb-pagination [collectionSize]="(pagedshows$|async)?.totalItems" [page]="currentPage$|async" (pageChange)="onPageChange($event)" [maxSize]="6" [rotate]="true" [ellipses]="true" [boundaryLinks]="false"></ngb-pagination>
+<ngb-pagination [collectionSize]="(pagedshows$|async)?.totalItems" [page]="(queryData$|async)?.page" [pageSize]=20 (pageChange)="onPageChange($event)" [maxSize]="6" [rotate]="true" [ellipses]="true" [boundaryLinks]="false"></ngb-pagination>
 <app-search (onSearch)="onSearch($event)"></app-search>
 <app-list [shows]="shows$|async" (selected)="onSelected($event)"></app-list>
-<ngb-pagination [collectionSize]="(pagedshows$|async)?.totalItems" [page]="currentPage$|async" (pageChange)="onPageChange($event)" [maxSize]="6" [rotate]="true" [ellipses]="true" [boundaryLinks]="false"></ngb-pagination>
+<ngb-pagination [collectionSize]="(pagedshows$|async)?.totalItems" [page]="(queryData$|async)?.page" [pageSize]=20 (pageChange)="onPageChange($event)" [maxSize]="6" [rotate]="true" [ellipses]="true" [boundaryLinks]="false"></ngb-pagination>

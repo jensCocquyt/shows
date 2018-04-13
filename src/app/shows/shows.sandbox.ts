@@ -21,6 +21,7 @@ export class ShowsSandbox implements OnDestroy {
 
     shows$ = this.store.pipe(select(s => s.shows));
     pagedShows$ = this.store.pipe(select(s => s.pagedShows));
+    queryData$ = this.store.pipe(select(s => s.queryData));
     show$ = this.store.pipe(select(s => s.showDetail));
     setSearchValue$ = new Subject<string>();
     setPage$ = new Subject<number>();
@@ -28,8 +29,13 @@ export class ShowsSandbox implements OnDestroy {
 
     constructor(private showsService: ShowsService, private store: Store<AppState>) {
 
-        this.setSearchValue$.subscribe(s => this.store.dispatch(new SetQueryDataSearchValueAction(s)));
-        this.setPage$.subscribe(p => this.store.dispatch(new SetQueryDataSearchPage(p)));
+        this.setSearchValue$
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(s => this.store.dispatch(new SetQueryDataSearchValueAction(s)));
+
+        this.setPage$
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(p => this.store.dispatch(new SetQueryDataSearchPage(p)));
 
         this.store.pipe(
             takeUntil(this.onDestroy$),

@@ -19,6 +19,7 @@ import { Show } from '../../core/model/show';
 export class AllShowsComponent implements OnDestroy {
 
   pagedshows$ = this.showsSandbox.pagedShows$;
+  queryData$ = this.showsSandbox.queryData$;
   shows$: Observable<Show[]>;
   currentPage$: Observable<number>;
   onDestroy$ = new Subject();
@@ -29,7 +30,8 @@ export class AllShowsComponent implements OnDestroy {
     private store: Store<AppState>) {
 
     this.shows$ = this.pagedshows$.pipe(filter(s => !!s), map((s) => s.items));
-    this.currentPage$ = this.pagedshows$.pipe(filter(s => !!s), map((s) => s.page));
+    // thisqueryData = this.showsSandbox.queryData$;
+
   }
 
 
