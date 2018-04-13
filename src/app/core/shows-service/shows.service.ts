@@ -5,6 +5,8 @@ import { Show } from '../model/show';
 import { Comment } from '../model/comment';
 import { Observable } from 'rxjs/Observable';
 import { forkJoin } from 'rxjs/observable/forkJoin';
+import { QueryData } from '../model/queryData';
+import { PagedList } from '../model/pagedList';
 
 
 @Injectable()
@@ -13,14 +15,13 @@ export class ShowsService {
   constructor(private httpClient: HttpClient) {
   }
 
-
-
-  public search(query: string) {
-    if (query) {
-      return this.fetchData(`https://api.themoviedb.org/3/
-      search/tv?api_key=16c887c508decabbbb79db65a20b2d09&language=en-US&query=${query}&page=1`);
+  public searchPaged(queryData: QueryData) {
+    if (queryData.searchValue) {
+      return this.fetchData(`https://api.themoviedb.org/3/` +
+        `search/tv?api_key=16c887c508decabbbb79db65a20b2d09&language=en-US&query=${queryData.searchValue}&page=${queryData.page}`);
     } else {
-      return this.getAll();
+      return this.fetchData(`https://api.themoviedb.org/3/discover/tv` +
+        `?api_key=16c887c508decabbbb79db65a20b2d09&language=en-US&sort_by=popularity.desc&page=${queryData.page}`);
     }
   }
 
@@ -47,7 +48,7 @@ export class ShowsService {
   public getShowById(id: number) {
     return this.httpClient
       .get<ResultShow>(`https://api.themoviedb.org/3/tv/${id}?` +
-      `api_key=16c887c508decabbbb79db65a20b2d09&language=en-US`);
+        `api_key=16c887c508decabbbb79db65a20b2d09&language=en-US`);
   }
 
   public getCommentsById(id: number) {
@@ -60,20 +61,15 @@ export class ShowsService {
     );
   }
 
-  private getAll() {
-    return this.fetchData(`https://api.themoviedb.org/3/discover/tv` +
-    `?api_key=16c887c508decabbbb79db65a20b2d09&language=en-US&sort_by=popularity.desc&page=1`);
-  }
-
   private fetchData(url: string) {
     return this.httpClient
       .get<ResultSet<ResultShow>>(url)
       .pipe(map(d => {
         return {
           totalPages: d.total_pages,
-          totalResults: d.total_results,
+          totalItems: d.total_results,
           page: d.page,
-          results: d.results.map(r => ({
+          items: d.results.map(r => ({
             name: r.name,
             description: r.overview,
             rating: r.vote_average,

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { AllShowsComponent } from './all-shows/all-shows.component';
 import { ShowDetailComponent } from './show-detail/show-detail.component';
@@ -14,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
+    NgbModule,
     ReactiveFormsModule,
     CoreModule,
     CommonModule,
